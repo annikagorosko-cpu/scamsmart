@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Module {
+  id          String             @id
+  order       Int
+  title       String
+  icon        String
+  intro       String
+  scenario    Json
+  warningSigns String[]
+  safeActions String[]
+  takeaway    String
+  questions   Question[]
+  completions ModuleCompletion[]
+}
+
+model Question {
+  id               String    @id
+  moduleId         String
+  order            Int
+  prompt           String
+  explanation      String
+  correctOptionKey String
+  module           Module    @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+  options          Option[]
+  attempts         Attempt[]
+}
+
+model Option {
+  id         String   @id @default(cuid())
+  questionId String
+  key        String
+  text       String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, key])
+}
+
+model Learner {
+  id          String             @id @default(uuid())
+  createdAt   DateTime           @default(now())
+  attempts    Attempt[]
+  completions ModuleCompletion[]
+}
+
+model Attempt {
+  id          String   @id @default(cuid())
+  learnerId   String
+  questionId  String
+  selectedKey String
+  isCorrect   Boolean
+  quizRunId   String
+  createdAt   DateTime @default(now())
+  learner     Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  question    Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([quizRunId, questionId])
+  @@index([learnerId])
+}
+
+model ModuleCompletion {
+  id          String   @id @default(cuid())
+  learnerId   String
+  moduleId    String
+  completedAt DateTime @default(now())
+  learner     Learner  @relation(fields: [learnerId], references: [id], onDelete: Cascade)
+  module      Module   @relation(fields: [moduleId], references: [id], onDelete: Cascade)
+
+  @@unique([learnerId, moduleId])
+}
