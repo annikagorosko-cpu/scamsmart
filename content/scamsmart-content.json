@@ -1,0 +1,269 @@
+{
+  "app": "ScamSmart",
+  "language": "et",
+  "audience": "Noored vanuses 12–15, Eesti",
+  "note": "Kõik näited on väljamõeldud. Domeenid lõpevad .example ja pankade, kullerite või platvormide tegelikke nimesid ei kasutata.",
+  "modules": [
+    {
+      "id": "sms-phishing",
+      "order": 1,
+      "title": "SMS-id ja õngitsuslingid",
+      "icon": "message-square",
+      "intro": "Õngitsus (phishing) tähendab, et petturid saadavad sõnumi, mis näeb välja nagu päris teenuse oma. Eesmärk on, et vajutaksid lingile ja sisestaksid andmeid või maksaksid.",
+      "scenario": {
+        "channel": "SMS",
+        "sender": "PAKITEENUS",
+        "example": "Teie paki kohaletoimetamine on peatatud puudulike aadressiandmete tõttu. Paki kättesaamiseks kinnitage andmed ja tasuge 1,99 €: paki-kinnitus.example"
+      },
+      "warningSigns": [
+        "Sõnum nõuab kiiret tegutsemist („täna“, „10 minuti jooksul“).",
+        "Sees on link, kus tuleb andmeid sisestada või maksta.",
+        "Summa on väike, et poleks kahju maksta.",
+        "Saatja on üldine („PAKITEENUS“, „Klienditugi“) ja sõnum ei kasuta sinu nime ega tellimuse numbrit.",
+        "Veebiaadress ei ole teenuse tuntud ametlik aadress."
+      ],
+      "safeActions": [
+        "Ära vajuta lingile ja ära sisesta kaardi- ega kontoandmeid.",
+        "Ava teenuse ametlik äpp või kirjuta aadress ise brauserisse ning kontrolli sealt.",
+        "Näita sõnumit vanemale või õpetajale.",
+        "Kustuta sõnum või teata sellest."
+      ],
+      "takeaway": "Kui sõnum kiirustab ja tahab, et vajutaksid lingile, peatu ja kontrolli teist teed pidi.",
+      "questions": [
+        {
+          "id": "sms-1",
+          "prompt": "Saad SMS-i: „Teie paki kohaletoimetamine on peatatud. Tasuge 1,99 €: paki-kinnitus.example“. Sa ootad tõesti paki saabumist. Mida teed?",
+          "options": [
+            { "id": "a", "text": "Vajutan lingile ja maksan 1,99 €, sest summa on väike." },
+            { "id": "b", "text": "Ei vajuta lingile. Kontrollin paki seisu teenuse ametlikust äpist või veebilehelt, mille aadressi kirjutan ise brauserisse." },
+            { "id": "c", "text": "Vastan sõnumile ja küsin, kes nad on." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Petturid kasutavad hetke, kui ootad päriselt pakki. Väike summa paneb sind kergemini nõustuma. Päris info leiad alati ametlikust äpist või veebilehelt, mille aadressi kirjutad ise. Sõnumile vastamine näitab petturile, et number on aktiivne."
+        },
+        {
+          "id": "sms-2",
+          "prompt": "Milline märk viitab kõige tugevamalt, et sõnum võib olla õngitsus?",
+          "options": [
+            { "id": "a", "text": "Sõnum on kirjutatud eesti keeles." },
+            { "id": "b", "text": "Sõnum nõuab kiiret tegutsemist ja sisaldab linki, kus tuleb andmeid sisestada." },
+            { "id": "c", "text": "Sõnumis on emotikon." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Kiirustamine koos lingiga on tüüpiline õngitsuse muster. Petturid tahavad, et ei jõuaks järele mõelda. Hea eesti keel ega emotikon ei tõesta midagi, sest tänapäeval on ka petusõnumid sageli korrektsed."
+        },
+        {
+          "id": "sms-3",
+          "prompt": "Sõnumis olev link on „minupank-kontroll.example“ ja leht näeb välja nagu pangaleht. Kuidas kindlaks teha, kas see on päris?",
+          "options": [
+            { "id": "a", "text": "Vaatan, kas lehel on pangalik logo ja kujundus." },
+            { "id": "b", "text": "Avan panga äpi või kirjutan panga tuntud aadressi ise brauserisse ega kasuta sõnumis olevat linki." },
+            { "id": "c", "text": "Vajutan lingile ja vaatan, mis juhtub." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Logo ja kujunduse saab petturite leht täpselt kopeerida. Usaldusväärne on ainult aadress, mille sa ise sisestad, või panga ametlik äpp. Link võib juba vajutamisel kahjulikku koodi laadida."
+        }
+      ]
+    },
+    {
+      "id": "fake-shops",
+      "order": 2,
+      "title": "Kahtlased veebipoed",
+      "icon": "shopping-cart",
+      "intro": "Võltsveebipood müüb tuntud tooteid väga madala hinnaga. Kui maksad, ei jõua kaup kunagi kohale või saad kaardiandmed varastatud.",
+      "scenario": {
+        "channel": "Veebipood",
+        "sender": "supertrendshop.example",
+        "example": "Premium juhtmevabad kõrvaklapid. Tavahind 279 €, täna ainult 39,99 €. Piiratud pakkumine! Ainult 3 toodet laos. 100% originaaltoode. Maksa kohe."
+      },
+      "warningSigns": [
+        "Hind on ebatavaliselt madal võrreldes teiste poodidega.",
+        "Pakkumine on ajaliselt või koguseliselt piiratud, et kiirustaksid („ainult 3 toodet laos“).",
+        "Poe kohta puudub selge info: ettevõtte nimi, registrikood, kontakt, tagastustingimused.",
+        "Pood on uus või leidsid selle ainult reklaamist.",
+        "Makse käib ainult otse ülekandega või tundmatu maksevormi kaudu."
+      ],
+      "safeActions": [
+        "Otsi poe nime kõrvale internetist sõna „arvustused“ ja loe, mida kirjutavad teised.",
+        "Kontrolli, kas poel on ettevõtte andmed ja päris kontakt.",
+        "Vali turvaline makseviis ja küsi ostu enne vanemalt luba.",
+        "Kui hind tundub liiga hea, et tõsi olla, siis tõenäoliselt ongi."
+      ],
+      "takeaway": "Liiga hea hind ja kiirustamine koos tähendavad: kontrolli poodi enne maksmist.",
+      "questions": [
+        {
+          "id": "shop-1",
+          "prompt": "Leiad veebipoe, kus 279 € kõrvaklapid maksavad täna 39,99 € ja „alles on ainult 3 tükki“. Mida teed enne ostmist?",
+          "options": [
+            { "id": "a", "text": "Ostan kohe, sest muidu on pakkumine läbi." },
+            { "id": "b", "text": "Kontrollin poe usaldusväärsust: otsin arvustusi väljastpoolt poodi ja vaatan ettevõtte andmeid." },
+            { "id": "c", "text": "Loen poe enda lehel olevaid viie tärni arvustusi ja usun neid." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Madal hind ja piiratud kogus on survemeetod. Poe enda lehel olevad arvustused võib petja ise kirjutada, seepärast otsi sõltumatuid arvustusi ja kontrolli ettevõtte andmeid."
+        },
+        {
+          "id": "shop-2",
+          "prompt": "Mida peaks usaldusväärne veebipood oma lehel selgelt näitama?",
+          "options": [
+            { "id": "a", "text": "Ainult suurt allahindluse bännerit." },
+            { "id": "b", "text": "Ettevõtte nime ja registrikoodi, kontaktandmeid ning tagastus- ja tarnetingimusi." },
+            { "id": "c", "text": "Palju lööki ja suurt „Osta kohe“ nuppu." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Päris ettevõte annab oma andmed ja tingimused avalikult. Kui neid pole või need on ebaselged, ei tea sa, kelle poole pöörduda, kui midagi läheb valesti."
+        },
+        {
+          "id": "shop-3",
+          "prompt": "Maksid veebipoes ja taipad nüüd, et pood võib olla võlts. Mis on kõige õigem esimene samm?",
+          "options": [
+            { "id": "a", "text": "Ootan nädala ja vaatan, kas pakk tuleb." },
+            { "id": "b", "text": "Räägin kohe vanemale ja võtame ühendust pangaga. Salvestan ekraanipildid ja tellimuse andmed." },
+            { "id": "c", "text": "Teen sama tellimuse uuesti, et see õnnestuks." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Mida kiiremini pank teada saab, seda suurem on võimalus makse peatada või raha tagasi küsida. Ekraanipildid ja tellimuse andmed aitavad pangal ja politseil juhtumit uurida. Kunagi ei tasu uuesti maksta."
+        }
+      ]
+    },
+    {
+      "id": "social-gaming",
+      "order": 3,
+      "title": "Sotsiaalmeedia- ja mängupettused",
+      "icon": "gamepad-2",
+      "intro": "Sotsiaalmeedias ja mängudes pakuvad petturid tasuta auhindu, mänguraha või „võitu“. Päriselt tahavad nad sinu parooli, andmeid või raha.",
+      "scenario": {
+        "channel": "Mängu privaatsõnum",
+        "sender": "manguabi_ee",
+        "example": "Hei! Sain võimaluse jagada tasuta mänguraha. Kui tahad 5000 ühikut, ava see link ja logi oma mängukontoga sisse: mangu-kink.example. Pakkumine kehtib ainult täna!"
+      },
+      "warningSigns": [
+        "Tundmatu konto pakub sulle midagi tasuta.",
+        "Tuleb logida sisse lingi kaudu, mitte mängu enda ametlikus rakenduses.",
+        "Auhinna saamiseks tuleb „tasuda tasu“ või anda andmeid.",
+        "Sõnum kiirustab („ainult täna“, „10 minutit jäänud“).",
+        "Tuttava konto kirjutab ootamatult ja palub raha, koodi või linki."
+      ],
+      "safeActions": [
+        "Ära logi sisse lingi kaudu ja ära anna oma parooli kellelegi.",
+        "Päris auhinna eest ei pea maksma. Ära maksa.",
+        "Blokeeri ja teata kontost platvormil.",
+        "Räägi vanemale või usaldusväärsele täiskasvanule."
+      ],
+      "takeaway": "Päris auhind ei küsi sinu parooli ega raha. Kui küsib, on see pettus.",
+      "questions": [
+        {
+          "id": "social-1",
+          "prompt": "Tundmatu konto kirjutab sulle mängus: „Ava link ja logi oma mängukontoga sisse, saad tasuta 5000 mänguraha!“. Mida teed?",
+          "options": [
+            { "id": "a", "text": "Login sisse, sest tasuta raha on hea." },
+            { "id": "b", "text": "Ei ava linki. Blokeerin konto, teatan sellest platvormil ja räägin vanemale." },
+            { "id": "c", "text": "Saadan lingi sõbrale, et ka tema saaks." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Võlts sisselogimisleht varastab sinu kasutajanime ja parooli ning petturid saavad ligi su kontole ja esemetele. Lingi edasi saatmine paneb ohtu ka sõbra."
+        },
+        {
+          "id": "social-2",
+          "prompt": "Sotsiaalmeedias tuleb sõnum: „Palju õnne, võitsid uue telefoni! Auhinna saatmiseks maksa 5 € registreerimistasu 10 minuti jooksul.“ Mis on tõenäoline?",
+          "options": [
+            { "id": "a", "text": "See on päris loosimine, sest summa on väike." },
+            { "id": "b", "text": "See on pettus: päris auhinna eest ei pea maksma ja kiirustamine on petturite võte." },
+            { "id": "c", "text": "See on päris, kui konto on kena ja ilusa profiilipildiga." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Ootamatu auhind koos tasu nõudmisega on tüüpiline pettus. Profiilipildi ja kujunduse saab kopeerida. Kui maksad 5 €, võivad petturid küsida veel ja saavad lisaks sinu kaardiandmed."
+        },
+        {
+          "id": "social-3",
+          "prompt": "Sõber kirjutab sotsiaalmeedias ootamatult, et tal on hädasti raha vaja ja palub ülekanne teha. Mida teed?",
+          "options": [
+            { "id": "a", "text": "Kannan kohe raha üle, sest sõber vajab abi." },
+            { "id": "b", "text": "Võtan sõbraga ühendust mõnda teist teed pidi (kõne, päris elus) ja kontrollin, kas ta ise kirjutas." },
+            { "id": "c", "text": "Küsin kontolt lisaküsimusi ja usun vastuseid." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Sõbra konto võidakse üle võtta või võltsida. Petturid kirjutavad sinu nimel ja kasutavad usaldust. Teist kanalit pidi kontrollimine on kõige kindlam."
+        }
+      ]
+    },
+    {
+      "id": "payments-auth",
+      "order": 4,
+      "title": "Maksed, panga nimel kõned ja Smart-ID",
+      "icon": "shield-check",
+      "intro": "Petturid esinevad panga töötajate, politseinike või pereliikmetena ning üritavad sind veenda koodi andma või raha kandma. Autentimiskoodid ja PIN-id on ainult sinu enda jaoks.",
+      "scenario": {
+        "channel": "Telefonikõne ja SMS",
+        "sender": "Klienditugi",
+        "example": "Tere! Teie pangakontol tuvastati kahtlane tegevus. Turvalisuse tagamiseks palume kinnitada Smart-ID PIN2-kood telefonikõne ajal. Lugupidamisega Turvaosakond"
+      },
+      "warningSigns": [
+        "Helistaja väidab end olevat pangast, politseist või teenusepakkujalt ja räägib kiireloomulisest probleemist.",
+        "Palub PIN-koodi, parooli, SMS-koodi või Smart-ID kinnitamist kõne ajal.",
+        "Soovib, et ei katkestaks kõnet ega räägiks kellelegi.",
+        "Pereliikme nimel tuleb sõnum uuelt numbrilt ja palub kiiresti raha, kuid ei luba helistada.",
+        "Palub raha kanda „turvalisele kontole“."
+      ],
+      "safeActions": [
+        "Lõpeta kõne ja ära kinnita ühtegi koodi.",
+        "Helista pangale ise numbrile, mis on panga ametlikul veebilehel või kaardi tagaküljel.",
+        "Kontrolli pereliikme sõnumit teise kanali kaudu, näiteks helistades tema tuntud numbrile.",
+        "Räägi vanemale kohe, ka siis kui oled juba midagi kinnitanud."
+      ],
+      "takeaway": "PIN-id ja koodid on ainult sinu jaoks. Pank ei küsi neid kunagi telefonitsi.",
+      "questions": [
+        {
+          "id": "pay-1",
+          "prompt": "Sulle helistab „panga turvaosakond“ ja palub kõne ajal Smart-ID PIN2 sisestada, „et konto kaitsta“. Mida teed?",
+          "options": [
+            { "id": "a", "text": "Sisestan PIN2, sest nad aitavad mu raha kaitsta." },
+            { "id": "b", "text": "Lõpetan kõne ega sisesta ühtegi koodi. Hiljem helistan pangale ise ametlikul numbril või räägin vanemale." },
+            { "id": "c", "text": "Palun helistajal oma nime öelda ja usun seda." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Pank ei küsi kunagi telefonitsi PIN-koode ega parooli. PIN2 abil saab teha makseid ja allkirju sinu nimel. Helistaja nime ja helistamisnumbrit saab võltsida, seepärast helista ise pangale tuntud numbril."
+        },
+        {
+          "id": "pay-2",
+          "prompt": "Tuleb sõnum kontaktilt „Ema“ (uuelt numbrilt): „Mul on kiire, ei saa praegu rääkida. Kas saad kiiresti 45 € kanda? Palun ära helista.“ Mida teed?",
+          "options": [
+            { "id": "a", "text": "Kannan raha kohe, ema on ju hädas." },
+            { "id": "b", "text": "Helistan emale tema tuntud numbril või küsin kodus vanemalt, kas ta tõesti kirjutas." },
+            { "id": "c", "text": "Vastan sõnumile ja küsin, kes ta on." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Petturid esinevad pereliikmena, loovad kiirustamise ja paluvad mitte helistada. Teise kanali kaudu kontrollimine murrab selle võtte. Tehisintellekt võib isegi häält jäljendada, nii et hääl üksi ei ole tõend."
+        },
+        {
+          "id": "pay-3",
+          "prompt": "Sa andsid kogemata petturile koodi ja taipasid, mis juhtus. Mida teed kohe?",
+          "options": [
+            { "id": "a", "text": "Ei räägi kellelegi, sest hakkan häbenema." },
+            { "id": "b", "text": "Teavitan kohe vanemat ja pangale ametlikul numbril, et konto ja kaart sulgeda." },
+            { "id": "c", "text": "Ootan, kas midagi juhtub." }
+          ],
+          "correctOptionId": "b",
+          "explanation": "Iga minut loeb. Pank saab kontod ja kaardid kiiresti blokeerida. Petturid loodavad, et jääd häbi pärast vait. Pettusesse satuvad ka täiskasvanud ja kiiresti abi küsimine on kõige tarkam samm."
+        }
+      ]
+    }
+  ],
+  "coachMessages": {
+    "correct": [
+      "Hästi tehtud! Sa märkasid ohumärki.",
+      "Täpselt nii! Kahtlane olukord tuleb alati üle kontrollida.",
+      "Tubli! Selline mõtteviis kaitseb sind päris elus."
+    ],
+    "incorrect": [
+      "Pole hullu, ka täiskasvanud eksivad. Vaata, miks õige vastus on õige.",
+      "Hea katse! Loe selgitust ja proovi järgmist.",
+      "Pettused on mõeldud usutavaks. Nii õpidki neid ära tundma."
+    ],
+    "resultBands": [
+      { "min": 0, "max": 5, "text": "Hea algus! Kordame mooduleid ja proovime uuesti." },
+      { "min": 6, "max": 9, "text": "Hästi läks! Mõned ohumärgid vajavad veel kordamist." },
+      { "min": 10, "max": 12, "text": "Suurepärane! Sa oled pettuste äratundmises tugev." }
+    ]
+  }
+}
